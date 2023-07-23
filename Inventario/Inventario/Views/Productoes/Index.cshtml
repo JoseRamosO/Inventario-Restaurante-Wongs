@@ -1,0 +1,99 @@
+﻿@model IEnumerable<Inventario.Models.Producto>
+
+@{
+    ViewBag.Title = "Index";
+}
+<script type="module" src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.esm.js"></script>
+<script nomodule src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.js"></script>
+<style>
+    ion-icon[name="add-circle-outline"] {
+        font-size: 300%;
+    }
+
+    ion-icon[name="create-outline" ] {
+        font-size: 150%;
+    }
+
+    ion-icon[name="trash-outline"] {
+        font-size: 150%;
+    }
+
+    ion-icon[name="eye-outline"] {
+        font-size: 150%;
+    }
+
+    ion-icon[name="arrow-back-circle-outline"] {
+        font-size: 150%;
+    }
+</style>
+<br />
+<br />
+<h2>Productos</h2>
+
+<script type="module" src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.esm.js"></script>
+<script nomodule src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.js"></script>
+<style>
+    ion-icon[name="add-circle-outline"] {
+        font-size: 300%;
+    }
+
+    ion-icon[name="create-outline" ] {
+        font-size: 150%;
+    }
+
+    ion-icon[name="trash-outline"] {
+        font-size: 150%;
+    }
+
+    ion-icon[name="eye-outline"] {
+        font-size: 150%;
+    }
+</style>
+<a href="@Url.Action("Create", "Productoes")" class=" btn btn-success">
+    <ion-icon name="add-circle-outline"></ion-icon>
+</a>
+
+<br />
+<br />
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.Nombre)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Tipo)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Proveedor.Nombre)
+        </th>
+        <th></th>
+    </tr>
+
+    @foreach (var item in Model)
+    {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.Nombre)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Tipo)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Proveedor.Nombre)
+            </td>
+            <td>
+                <a href="@Url.Action("Edit", "Productoes", new { id = item.ProductoID })" class=" btn btn-warning" id="Edit-@item.ProductoID">
+                    <ion-icon name="create-outline"></ion-icon>
+                </a> |
+                <a href="@Url.Action("Details", "Productoes", new { id=item.ProductoID })" class="btn btn-primary" id="Details-@item.ProductoID">
+                    <ion-icon name="eye-outline"></ion-icon>
+                </a>
+                |
+                <a href="@Url.Action("Delete", "Productoes", new { id = item.ProductoID })" class="btn btn-danger" id="Delete-@item.ProductoID">
+                    <ion-icon name="trash-outline"></ion-icon>
+                </a>
+            </td>
+        </tr>
+    }
+
+</table>

@@ -1,0 +1,56 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>@ViewBag.Title - My ASP.NET Application</title>
+    @Styles.Render("~/Content/css")
+    @Scripts.Render("~/bundles/modernizr")
+
+</head>
+<body>
+    
+    <style>
+        .navbar-inverse {
+            background-color: brown
+        }
+
+            .navbar-inverse .navbar-nav > li > a {
+                color: #f9af00;
+            }
+    </style>
+    <div class="navbar navbar-inverse navbar-fixed-top">
+        <div class="container">
+
+            <div class="navbar-collapse collapse">
+                <ul class="nav navbar-nav">
+                    <li>
+                        <a href="@Url.Action("Index", "Home")" class="navbar-brand" style=" width: 70px; height: 70px;">
+                            <img src="/img/Logo.png" style="display:flex;flex-direction: row;width: 40px;height: 40px;">
+                        </a>
+
+                    </li>
+                    <li>@Html.ActionLink("Roles", "Index", "AspNetRoles")</li>
+                    <li>@Html.ActionLink("Usuarios", "Index", "AspNetUsers")</li>
+                    <li>@Html.ActionLink("Proveedores", "Index", "Proveedors")</li>
+                    <li>@Html.ActionLink("Productos", "Index", "Productoes")</li>
+                    <li>@Html.ActionLink("Historial de Productos", "Index", "HistorialProductoes")</li>
+                    <li>@Html.ActionLink("Stock", "Index", "ViewProductoHistorials")</li>
+                </ul>
+                @Html.Partial("_LoginPartial")
+            </div>
+        </div>
+    </div>
+    <div class="container body-content">
+        @RenderBody()
+        <hr />
+        <footer>
+            <p>&copy; @DateTime.Now.Year - My ASP.NET Application</p>
+        </footer>
+    </div>
+
+    @Scripts.Render("~/bundles/jquery")
+    @Scripts.Render("~/bundles/bootstrap")
+    @RenderSection("scripts", required: false)
+</body>
+</html>

@@ -1,0 +1,82 @@
+﻿@model IEnumerable<Inventario.Models.ViewProductoHistorial>
+
+@{
+    ViewBag.Title = "Index";
+}
+
+<script>
+    function applyFilters() {
+        var selectedProductName = $("#SelectedProduct").val();
+        var selectedProviderName = $("#SelectedProvider").val();
+        var selectedType = $("#SelectedType").val();
+
+        $.ajax({
+            type: "GET",
+            url: "@Url.Action("FilteredData", "ViewProductoHistorials")",
+            data: {
+                productName: selectedProductName,
+                providerName: selectedProviderName,
+                type: selectedType
+            },
+            success: function (data) {
+                // Update the table with the filtered data
+                $("#productTable").html(data);
+            },
+            error: function () {
+                alert("An error occurred while fetching filtered data.");
+            }
+        });
+    }
+</script>
+
+
+<br />
+<br />
+<h2>Stock</h2>
+<label>Filtro Nombre:</label>
+@Html.DropDownList("SelectedProduct", new SelectList(ViewBag.FiltroNombre, "NombreProducto", "NombreProducto", ""), "All Products", new { onchange = "applyFilters()" })
+|<label>Filtro Proveedor:</label>
+@Html.DropDownList("SelectedProvider", new SelectList(ViewBag.FiltroProveedor, "NombreProveedor", "NombreProveedor", ""), "All Providers", new { onchange = "applyFilters()" })
+|<label>Filtro Tipo:</label>
+@Html.DropDownList("SelectedType", new SelectList(ViewBag.FiltroTipo, "Tipo", "Tipo", ""), "All Types", new { onchange = "applyFilters()" })
+
+
+
+
+<table class="table" id="productTable">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.NombreProducto)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.NombreProveedor)
+        <th>
+            @Html.DisplayNameFor(model => model.Tipo)
+        </th>
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.CantidadTotal)
+        </th>
+
+    </tr>
+
+    @foreach (var item in Model)
+    {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.NombreProducto)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.NombreProveedor)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Tipo)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.CantidadTotal)
+            </td>
+
+        </tr>
+    }
+
+</table>
