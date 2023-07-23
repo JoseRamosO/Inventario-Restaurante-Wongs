@@ -1,0 +1,119 @@
+﻿@model Inventario.Models.HistorialProducto
+
+@{
+    ViewBag.Title = "Edit";
+}
+<script type="module" src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.esm.js"></script>
+<script nomodule src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.js"></script>
+<style>
+    ion-icon[name="add-circle-outline"] {
+        font-size: 300%;
+    }
+
+    ion-icon[name="create-outline" ] {
+        font-size: 150%;
+    }
+
+    ion-icon[name="trash-outline"] {
+        font-size: 150%;
+    }
+
+    ion-icon[name="eye-outline"] {
+        font-size: 150%;
+    }
+
+    ion-icon[name="arrow-back-circle-outline"] {
+        font-size: 150%;
+    }
+</style>
+<h2>Edit</h2>
+
+
+@using (Html.BeginForm())
+{
+    @Html.AntiForgeryToken()
+
+    <div class="form-horizontal">
+        <h4>HistorialProducto</h4>
+        <hr />
+        @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+        @Html.HiddenFor(model => model.HistorialProductoID)
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.Cantidad, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.Cantidad, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.ValidationMessageFor(model => model.Cantidad, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.Monto, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.Monto, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.ValidationMessageFor(model => model.Monto, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.Fecha, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.Fecha, new { htmlAttributes = new { @class = "form-control", @Type = "date" } })
+                @Html.ValidationMessageFor(model => model.Fecha, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.Accion, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                <span>@Html.RadioButtonFor(model => model.Accion, "Add", new { htmlAttributes = new { @class = "form-control" } }) Agregar</span>
+                <span>@Html.RadioButtonFor(model => model.Accion, "Remove", new { htmlAttributes = new { @class = "form-control" } }) Remover</span>
+                @Html.ValidationMessageFor(model => model.Accion, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.Descripcion, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.Descripcion, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.ValidationMessageFor(model => model.Descripcion, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.ProductoID, "ProductoID", htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.DropDownList("ProductoID", null, htmlAttributes: new { @class = "form-control" })
+                @Html.ValidationMessageFor(model => model.ProductoID, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.UnidadDeMedida, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                <span>@Html.RadioButtonFor(model => model.UnidadDeMedida, "kg", new { htmlAttributes = new { @class = "form-control" } }) Kg</span>
+                <br />
+                <span>@Html.RadioButtonFor(model => model.UnidadDeMedida, "l", new { htmlAttributes = new { @class = "form-control" } }) Litros</span>
+                <br />
+                <span>@Html.RadioButtonFor(model => model.UnidadDeMedida, "Paquete", new { htmlAttributes = new { @class = "form-control" } }) Paquete</span>
+                @Html.ValidationMessageFor(model => model.UnidadDeMedida, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+        <div class="form-group">
+            <div class="col-md-offset-2 col-md-10">
+                <input type="submit" value="Save" class="btn btn-warning" />
+            </div>
+        </div>
+    </div>
+}
+
+<div>
+    <a href="@Url.Action("Index", "HistorialProductoes")" class="btn btn-info" id="Return">
+        <ion-icon name="arrow-back-circle-outline"></ion-icon>
+    </a>
+</div>
+
+@section Scripts {
+    @Scripts.Render("~/bundles/jqueryval")
+}

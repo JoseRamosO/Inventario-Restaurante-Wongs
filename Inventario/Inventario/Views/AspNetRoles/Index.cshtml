@@ -1,0 +1,62 @@
+﻿@model IEnumerable<Inventario.Models.AspNetRoles>
+
+@{
+    ViewBag.Title = "Index";
+}
+<br />
+<br />
+<h2>Roles</h2>
+
+<script type="module" src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.esm.js"></script>
+<script nomodule src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.js"></script>
+<style>
+    ion-icon[name="add-circle-outline"] {
+        font-size: 300%; 
+    }
+    ion-icon[name="create-outline" ] {
+        font-size: 150%;
+    }
+    ion-icon[name="trash-outline"]  {
+        font-size: 150%;
+    }
+    ion-icon[name="eye-outline"] {
+        font-size: 150%;
+    }
+</style>
+<a href="@Url.Action("Create", "AspNetRoles")" class=" btn btn-success">
+    <ion-icon name="add-circle-outline"></ion-icon>
+</a>
+
+<br/>
+<br/>
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.Name)
+        </th>
+        <th></th>
+    </tr>
+
+    @foreach (var item in Model)
+    {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.Name)
+            </td>
+            <td>
+                <a href="@Url.Action("Edit", "AspNetRoles", new { id = item.Id })" class=" btn btn-warning"  id="Edit-@item.Id">
+                    <ion-icon name="create-outline"></ion-icon>
+                </a> |
+                <a href="@Url.Action("Details", "AspNetRoles" , new { id=item.Id })" class="btn btn-primary"  id="Details-@item.Id">
+                    <ion-icon name="eye-outline"></ion-icon>
+                </a>
+                |
+                <a href="@Url.Action("Delete", "AspNetRoles", new { id = item.Id })" class="btn btn-danger"  id="Delete-@item.Id">
+                    <ion-icon name="trash-outline"></ion-icon>
+                </a>
+
+            </td>
+</tr>
+    }
+
+</table>

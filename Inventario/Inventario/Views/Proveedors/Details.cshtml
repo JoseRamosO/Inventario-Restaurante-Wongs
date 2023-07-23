@@ -1,0 +1,52 @@
+﻿@model Inventario.Models.Proveedor
+
+@{
+    ViewBag.Title = "Details";
+}
+<script type="module" src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.esm.js"></script>
+<script nomodule src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.js"></script>
+<style>
+    ion-icon[name="add-circle-outline"] {
+        font-size: 300%;
+    }
+
+    ion-icon[name="create-outline" ] {
+        font-size: 150%;
+    }
+
+    ion-icon[name="trash-outline"] {
+        font-size: 150%;
+    }
+
+    ion-icon[name="eye-outline"] {
+        font-size: 150%;
+    }
+
+    ion-icon[name="arrow-back-circle-outline"] {
+        font-size: 150%;
+    }
+</style>
+<h2>Details</h2>
+
+<div>
+    <h4>Proveedor</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.Nombre)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Nombre)
+        </dd>
+
+    </dl>
+</div>
+<p>
+    <a href="@Url.Action("Edit", "Proveedors", new { id = Model.ProveedorID })" class=" btn btn-warning" id="Edit">
+        <ion-icon name="create-outline"></ion-icon>
+    </a>
+    <a href="@Url.Action("Index", "Proveedors")" class="btn btn-info" id="Return">
+        <ion-icon name="arrow-back-circle-outline"></ion-icon>
+    </a>
+</p>

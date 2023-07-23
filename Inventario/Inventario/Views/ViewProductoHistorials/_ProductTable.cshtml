@@ -1,0 +1,40 @@
+﻿
+@model IEnumerable<Inventario.Models.ViewProductoHistorial>
+
+<table class="table" id="productTable">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.NombreProducto)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.NombreProveedor)
+        <th>
+            @Html.DisplayNameFor(model => model.Tipo)
+        </th>
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.CantidadTotal)
+        </th>
+
+    </tr>
+
+    @foreach (var item in Model)
+    {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.NombreProducto)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.NombreProveedor)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Tipo)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.CantidadTotal)
+            </td>
+
+        </tr>
+    }
+
+</table>

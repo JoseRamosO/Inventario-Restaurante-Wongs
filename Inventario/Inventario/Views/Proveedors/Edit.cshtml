@@ -1,0 +1,66 @@
+﻿@model Inventario.Models.Proveedor
+
+@{
+    ViewBag.Title = "Edit";
+}
+<script type="module" src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.esm.js"></script>
+<script nomodule src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.js"></script>
+<style>
+    ion-icon[name="add-circle-outline"] {
+        font-size: 300%;
+    }
+
+    ion-icon[name="create-outline" ] {
+        font-size: 150%;
+    }
+
+    ion-icon[name="trash-outline"] {
+        font-size: 150%;
+    }
+
+    ion-icon[name="eye-outline"] {
+        font-size: 150%;
+    }
+
+    ion-icon[name="arrow-back-circle-outline"] {
+        font-size: 150%;
+    }
+</style>
+<h2>Edit</h2>
+
+
+@using (Html.BeginForm())
+{
+    @Html.AntiForgeryToken()
+
+    <div class="form-horizontal">
+        <h4>Proveedor</h4>
+        <hr />
+        @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+        @Html.HiddenFor(model => model.ProveedorID)
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.Nombre, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.Nombre, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.ValidationMessageFor(model => model.Nombre, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+        <div class="form-group">
+            <div class="col-md-offset-2 col-md-10">
+                <input type="submit" value="Save" class="btn btn-warning" id="Edit" />
+            </div>
+        </div>
+    </div>
+}
+
+<div>
+    <a href="@Url.Action("Index", "Proveedors")" class="btn btn-info" id="Return">
+        <ion-icon name="arrow-back-circle-outline"></ion-icon>
+    </a>
+</div>
+
+@section Scripts {
+    @Scripts.Render("~/bundles/jqueryval")
+}
