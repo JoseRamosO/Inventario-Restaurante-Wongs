@@ -11,7 +11,8 @@ namespace Inventario.Models
 {
     using System;
     using System.Collections.Generic;
-    
+    using System.ComponentModel.DataAnnotations;
+
     public partial class Producto
     {
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
@@ -21,8 +22,11 @@ namespace Inventario.Models
         }
     
         public int ProductoID { get; set; }
+        [Required]
         public string Nombre { get; set; }
+        [Required]
         public string Tipo { get; set; }
+        [Required]
         public int ProveedorID { get; set; }
     
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
